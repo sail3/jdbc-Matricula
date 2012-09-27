@@ -68,5 +68,22 @@ public class AlumnoDAO {
     return codigo;
   }
 
+  /**
+   * Este metodo elimina un registro de la base de datos.
+   * 
+   * @param alumno objeto del cual se le extrae el codigo de alumno.
+   * @throws InstantiationException
+   * @throws IllegalAccessException
+   * @throws ClassNotFoundException
+   * @throws SQLException 
+   */
+  public void eliminarAlumno(AlumnoTO alumno) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    String sql = "DELETE FROM Alumno WHERE int_alumid = ?";
+    ResultSet cdr = null;
+    PreparedStatement ps = AccesoDB.getConection().prepareStatement(sql);
+    ps.setInt(1, alumno.getCodigo());
+    ps.executeUpdate();
+  }
+
 }
 
