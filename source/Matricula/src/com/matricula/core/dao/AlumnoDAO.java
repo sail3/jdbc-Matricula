@@ -43,6 +43,10 @@ public class AlumnoDAO {
     return alumno;
   }
   
+  public void MensajeNuevo(){
+      System.out.println("Este es un metodo nuevo");
+  }
+  
   /**
    * Este metodo registra un alumno a la base de datos
    * 

@@ -31,7 +31,7 @@ public class Matricula {
       System.out.println(alumno.getRecibo());
       System.out.println("insertardo alumno.......");
       System.out.println("la clave del nuevo usuario es: " + new AlumnoDAO().registrarAlumno(new AlumnoTO("test03", "recibotest")));
-      
+      new AlumnoDAO().MensajeNuevo();
     } catch (InstantiationException ex) {
       Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
     } catch (IllegalAccessException ex) {
