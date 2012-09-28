@@ -6,6 +6,9 @@ package com.matricula.core.dao;
 
 import com.matricula.core.db.AccesoDB;
 import com.matricula.core.to.AlumnoTO;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,11 +45,7 @@ public class AlumnoDAO {
     }
     return alumno;
   }
-  
-  public void MensajeNuevo(){
-      System.out.println("Este es un metodo nuevo");
-  }
-  
+    
   /**
    * Este metodo registra un alumno a la base de datos
    * 
@@ -71,6 +70,24 @@ public class AlumnoDAO {
     }
     return codigo;
   }
+  
+  /**
+   * Este metodo edita un registro de la base de datos.
+   */
+  
+  public AlumnoTO editarAlumno(int codigo, String nuevoNombre, String nuevoRecibo) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    String sql = "UPDATE Alumno SET vch_alumnombre=?, chr_alumrecibo=? WHERE int_alumid=?";
+    PreparedStatement pst = AccesoDB.getConection().prepareStatement(sql);
+    ResultSet cdr = null; AlumnoTO alumno = null;
+    pst.setString(1, nuevoNombre);
+    pst.setString(2, nuevoRecibo);
+    pst.setInt(3, codigo);
+    pst.executeUpdate();
+    System.out.println("Registro editado");
+    return alumno;
+  }
+  
+  
 
   /**
    * Este metodo elimina un registro de la base de datos.
