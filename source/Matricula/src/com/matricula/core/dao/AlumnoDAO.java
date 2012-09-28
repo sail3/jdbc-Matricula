@@ -68,6 +68,7 @@ public class AlumnoDAO {
     while (cdr.next()) {
       codigo = cdr.getInt(1);
     }
+    System.out.println("----------------------------------");
     System.out.println("Registro guardado!");
     return codigo;    
   }
@@ -89,6 +90,7 @@ public class AlumnoDAO {
     pst.setString(2, nuevoRecibo);
     pst.setInt(3, codigo);
     pst.executeUpdate();
+    System.out.println("----------------------------------");
     System.out.println("Registro editado!");
     return alumno;
   }
