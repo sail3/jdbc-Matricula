@@ -68,13 +68,19 @@ public class AlumnoDAO {
     while (cdr.next()) {
       codigo = cdr.getInt(1);
     }
-    return codigo;
+    System.out.println("Registro guardado!");
+    return codigo;    
   }
   
-  /**
+/**
    * Este metodo edita un registro de la base de datos.
+   * 
+   * @param alumno objeto del cual se le extrae el codigo de alumno.
+   * @throws InstantiationException
+   * @throws IllegalAccessException
+   * @throws ClassNotFoundException
+   * @throws SQLException 
    */
-  
   public AlumnoTO editarAlumno(int codigo, String nuevoNombre, String nuevoRecibo) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
     String sql = "UPDATE Alumno SET vch_alumnombre=?, chr_alumrecibo=? WHERE int_alumid=?";
     PreparedStatement pst = AccesoDB.getConection().prepareStatement(sql);
@@ -83,7 +89,7 @@ public class AlumnoDAO {
     pst.setString(2, nuevoRecibo);
     pst.setInt(3, codigo);
     pst.executeUpdate();
-    System.out.println("Registro editado");
+    System.out.println("Registro editado!");
     return alumno;
   }
   

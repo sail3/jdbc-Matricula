@@ -2,8 +2,8 @@
 # Database: DB_matricula
 # root@localhost
 
-# CREATE DATABASE DB_matricula;
-# USE DB_matricula;
+CREATE DATABASE DB_matricula;
+USE DB_matricula;
 
 #
 # Table structure for table 'Alumno'
