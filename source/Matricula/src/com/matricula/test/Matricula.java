@@ -34,43 +34,42 @@ AlumnoDAO Objeto = new AlumnoDAO();
       int opcion=Integer.parseInt(lec.readLine());//Leemos la opcion y jugamos con el switch
               
       switch(opcion){
-                  
-                  case 1://Creando un registro
-                      System.out.println("----------------------------------");
-                      System.out.println("  Ingrese informacion del alumno");
-                      System.out.println("----------------------------------");
-                      System.out.println("Ingrese nombre:");//Pedimos los datos
-                      String nombre=lec.readLine();
-                      System.out.println("Ingrese recibo:");
-                      String recibo=lec.readLine();//Guardamos los datos en la BD
-                      new AlumnoDAO().registrarAlumno(new AlumnoTO(nombre, recibo));
-                      break;
-                      
-                  case 2: //Editando un registro
-                      System.out.println("----------------------------------\nIngrese su codigo: ");
-                      int codigo=Integer.parseInt(lec.readLine());//Leemos el codigo
-                      AlumnoTO alumnoAEditar = new AlumnoDAO().obtenerAlumno(codigo);
-                      //Mostramos la inforacion del alumno con el codigo que pedimos
-                      System.out.println("----------------------------------");
-                      System.out.println("Informacion del alumno encontrado");
-                      System.out.println("----------------------------------");
-                      System.out.println("  Codigo:   "+alumnoAEditar.getCodigo());
-                      System.out.println("  Nombre:   "+alumnoAEditar.getNombre());
-                      System.out.println("  NºRecibo: "+alumnoAEditar.getRecibo());
-                      System.out.println("----------------------------------");
-                      System.out.println("Ingrese nuevo nombre:");//Pedimos los datos nuevos
-                      String nuevoNombre=lec.readLine();
-                      System.out.println("Ingrese nuevo recibo:");
-                      String nuevoRecibo=lec.readLine();//Llamamos al metodo editar
-                      new AlumnoDAO().editarAlumno(codigo, nuevoNombre, nuevoRecibo);
-                      break;
-                      
-                  case 3:
-                      System.exit(0);
-                      break;
-                  
-                  default: System.out.println("Opcion no valida!");
-              }
+                        
+          case 1://Creando un registro
+              System.out.println("----------------------------------");
+              System.out.println("  Ingrese informacion del alumno");
+              System.out.println("----------------------------------");//Pedimos los datos
+              System.out.println("Ingrese nombre:");String nombre=lec.readLine();
+              System.out.println("Ingrese recibo:");String recibo=lec.readLine();
+              //Llamamos al metodo registrar
+              new AlumnoDAO().registrarAlumno(new AlumnoTO(nombre, recibo));
+              System.out.println("----------------------------------");
+              System.out.println("Registro creado!");
+              break;
+          
+          case 2: //Editando un registro
+              System.out.println("Ingrese su codigo: ");
+              int codigo=Integer.parseInt(lec.readLine());//Leemos el codigo
+              AlumnoTO a = new AlumnoDAO().obtenerAlumno(codigo);//Obtenemos la informacion del alumno
+              System.out.println("----------------------------------");//Mostramos la informacion del alumno
+              System.out.println("Codigo Actual:"+a.getCodigo()+"\nNombre Actual:"+a.getNombre()+"\nRecibo Actual:"+a.getRecibo());
+              System.out.println("----------------------------------");
+              System.out.println("Nuevo nombre:");String nuevoNombre=lec.readLine();
+              System.out.println("Nuevo recibo:");String nuevoRecibo=lec.readLine();
+              //Llamamos al metodo editar
+              new AlumnoDAO().editarAlumno(new AlumnoTO(codigo, nuevoNombre, nuevoRecibo));
+              System.out.println("----------------------------------");
+              System.out.println("Registro editado!");
+              break;
+          
+          case 3:
+              System.exit(0);
+              break;
+          
+          default: 
+              System.out.println("Opcion no valida!");
+              
+      }
       
     } catch (InstantiationException ex) {
       Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
