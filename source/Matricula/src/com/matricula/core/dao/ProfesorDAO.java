@@ -4,7 +4,6 @@ import com.matricula.core.db.AccesoDB;
 import com.matricula.core.interfaces.Maintanable;
 import com.matricula.core.interfaces.ProfesorDAOInterface;
 import com.matricula.core.to.ProfesorTO;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,19 +19,6 @@ import java.util.List;
  */
 public class ProfesorDAO implements ProfesorDAOInterface {
 
-    Connection conexion;
-
-    /**
-     *
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    public ProfesorDAO() throws InstantiationException, IllegalAccessException, SQLException, ClassNotFoundException {
-        conexion = AccesoDB.getConection();
-    }
-
     /**
      *
      * @param obj el objeto Profesor que se va a insertar.
@@ -42,8 +28,14 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      */
     @Override
     public int create(ProfesorTO obj) throws SQLException {
-        String sqlinsercion = "INSERT INTO profesor(vch_profnombre, vch_proftitulo) VALUES(?, ?)";
-        PreparedStatement pst = conexion.prepareStatement(sqlinsercion);
+        String sqlinsercion = "INSERT INTO Profesor(vch_profnombre, vch_proftitulo) VALUES(?, ?)";
+        PreparedStatement pst = null;
+        try {
+            pst = AccesoDB.getConection().prepareStatement(sqlinsercion);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return 0;
+        }
         pst.setString(1, obj.getNombre());
         pst.setString(2, obj.getTitulo());
         int rowsAffected = pst.executeUpdate();
@@ -58,8 +50,14 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      */
     @Override
     public ProfesorTO retrieve(Integer codigo) throws SQLException {
-        String sql = "SELECT * FROM profesor WHERE int_alumid = ?";
-        PreparedStatement pst = conexion.prepareStatement(sql);
+        String sql = "SELECT * FROM Profesor WHERE int_alumid = ?";
+        PreparedStatement pst = null;
+        try {
+            pst = AccesoDB.getConection().prepareStatement(sql);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return null;
+        }
         pst.setInt(1, codigo);
         ResultSet rs = pst.executeQuery();
         ProfesorTO obj = null;
@@ -81,9 +79,15 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      */
     @Override
     public int update(ProfesorTO obj) throws SQLException {
-        String sqlActualizacion = "UPDATE profesor SET vch_profnombre=?, "
+        String sqlActualizacion = "UPDATE Profesor SET vch_profnombre=?, "
                 + "vch_proftitulo=? WHERE int_profid=?";
-        PreparedStatement pst = conexion.prepareStatement(sqlActualizacion);
+        PreparedStatement pst = null;
+        try {
+            pst = AccesoDB.getConection().prepareStatement(sqlActualizacion);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return 0;
+        }
         pst.setInt(3, obj.getCodigo());
         pst.setString(1, obj.getNombre());
         pst.setString(2, obj.getTitulo());
@@ -101,8 +105,14 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      */
     @Override
     public int delete(Integer codigo) throws SQLException {
-        String sqlEliminacion = "DELETE FROM profesor WHERE int_profid=?";
-        PreparedStatement pst = conexion.prepareStatement(sqlEliminacion);
+        String sqlEliminacion = "DELETE FROM Profesor WHERE int_profid=?";
+        PreparedStatement pst = null;
+        try {
+            pst = AccesoDB.getConection().prepareStatement(sqlEliminacion);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return 0;
+        }
         pst.setInt(1, codigo);
         int rowsAffected = pst.executeUpdate();
         return rowsAffected;
@@ -117,8 +127,14 @@ public class ProfesorDAO implements ProfesorDAOInterface {
     public List<ProfesorTO> findAll() throws SQLException {
         List lista = new ArrayList();
         String sqlConsulta = "SELECT int_profid, vch_profnombre, vch_proftitulo "
-                + "FROM profesor ORDER BY 1";
-        PreparedStatement pst = conexion.prepareStatement(sqlConsulta);
+                + "FROM Profesor ORDER BY 1";
+        PreparedStatement pst = null;
+        try {
+            pst = AccesoDB.getConection().prepareStatement(sqlConsulta);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+            return null;
+        }
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             ProfesorTO obj = new ProfesorTO();
