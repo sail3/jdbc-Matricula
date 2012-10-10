@@ -18,8 +18,8 @@ public class AccesoDB {
     
     if (conexion == null) {
       String url = "jdbc:mysql://localhost/DB_matricula";
-      String pass = "root";
-      String user = "root";
+      String pass = "matricula";
+      String user = "matricula";
       String driver = "com.mysql.jdbc.Driver";
       Class.forName(driver).newInstance();
       conexion = DriverManager.getConnection(url, user, pass);
