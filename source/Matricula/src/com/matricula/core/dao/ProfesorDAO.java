@@ -24,9 +24,13 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @return un int que representa el número de filas afectadas, devuelve 1 si
      * la inserción fue exitosa, en caso contrario devuelve 0.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     @Override
-    public int crear(ProfesorTO obj) throws SQLException {
+    public int crear(ProfesorTO obj) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlinsercion = "INSERT INTO Profesor(vch_profnombre, vch_proftitulo) VALUES(?, ?)";
         PreparedStatement pst;
         try {
@@ -48,7 +52,8 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @throws SQLException
      */
     @Override
-    public ProfesorTO recuperar(Integer codigo) throws SQLException {
+    public ProfesorTO recuperar(Integer codigo) throws SQLException,
+            InstantiationException, IllegalAccessException, ClassNotFoundException {
         String sql = "SELECT * FROM Profesor WHERE int_alumid = ?";
         PreparedStatement pst;
         try {
@@ -77,7 +82,8 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @throws SQLException
      */
     @Override
-    public int actualizar(ProfesorTO obj) throws SQLException {
+    public int actualizar(ProfesorTO obj) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlActualizacion = "UPDATE Profesor SET vch_profnombre=?, "
                 + "vch_proftitulo=? WHERE int_profid=?";
         PreparedStatement pst;
@@ -103,7 +109,8 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @throws SQLException
      */
     @Override
-    public int eliminar(Integer codigo) throws SQLException {
+    public int eliminar(Integer codigo) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlEliminacion = "DELETE FROM Profesor WHERE int_profid=?";
         PreparedStatement pst;
         try {
@@ -123,7 +130,8 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @throws SQLException
      */
     @Override
-    public List<ProfesorTO> listarTodos() throws SQLException {
+    public List<ProfesorTO> listarTodos() throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         List lista = new ArrayList();
         String sqlConsulta = "SELECT int_profid, vch_profnombre, vch_proftitulo "
                 + "FROM Profesor ORDER BY 1";

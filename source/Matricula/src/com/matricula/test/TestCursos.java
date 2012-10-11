@@ -107,14 +107,14 @@ public class TestCursos {
                 //Se listan los Cursos.
                 case 4:
                     try {
-                        List lista = dao.findAll();
+                        List lista = dao.listarTodos();
                         Iterator it = lista.iterator();
                         while (it.hasNext()) {
                             CursoTO registro;
                             registro = (CursoTO) it.next();//Casting de Object a CursoTO
                             System.out.println(registro);
                         }
-                    } catch (SQLException ex) {
+                    } catch (Exception ex) {
                         System.out.println("Error: " + ex.getMessage());
                     }
 

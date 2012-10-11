@@ -23,16 +23,12 @@ public class CursoDAO implements CursoDAOInterface {
      * @throws SQLException
      */
     @Override
-    public int crear(CursoTO obj) throws SQLException {
+    public int crear(CursoTO obj) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlinsercion = "INSERT INTO Curso(vch_cursnombre, "
                 + "vch_cursdescripcion, int_curscreditos) VALUES(?, ?, ?)";
         PreparedStatement pst;
-        try {
-            pst = AccesoDB.getConection().prepareStatement(sqlinsercion);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            return 0;
-        }
+        pst = AccesoDB.getConection().prepareStatement(sqlinsercion);
         pst.setString(1, obj.getNombre());
         pst.setString(2, obj.getDescripcion());
         pst.setInt(3, obj.getCreditos());
@@ -47,16 +43,12 @@ public class CursoDAO implements CursoDAOInterface {
      * @throws SQLException
      */
     @Override
-    public CursoTO recuperar(Integer codigo) throws SQLException {
+    public CursoTO recuperar(Integer codigo) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sql = "SELECT int_cursid, vch_cursnombre, vch_cursdescripcion, "
                 + "int_curscreditos FROM Curso WHERE int_cursid = ?";
         PreparedStatement pst;
-        try {
-            pst = AccesoDB.getConection().prepareStatement(sql);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            return null;
-        }
+        pst = AccesoDB.getConection().prepareStatement(sql);
         pst.setInt(1, codigo);
         ResultSet rs = pst.executeQuery();
         CursoTO obj = null;
@@ -78,16 +70,12 @@ public class CursoDAO implements CursoDAOInterface {
      * @throws SQLException
      */
     @Override
-    public int actualizar(CursoTO obj) throws SQLException {
+    public int actualizar(CursoTO obj) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlActualizacion = "UPDATE Curso SET vch_cursnombre=?, "
                 + "vch_cursdescripcion=?, int_curscreditos=? WHERE int_cursid=?";
         PreparedStatement pst;
-        try {
-            pst = AccesoDB.getConection().prepareStatement(sqlActualizacion);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            return 0;
-        }
+        pst = AccesoDB.getConection().prepareStatement(sqlActualizacion);
         pst.setString(1, obj.getNombre());
         pst.setString(2, obj.getDescripcion());
         pst.setInt(3, obj.getCreditos());
@@ -105,15 +93,11 @@ public class CursoDAO implements CursoDAOInterface {
      * @throws SQLException
      */
     @Override
-    public int eliminar(Integer codigo) throws SQLException {
+    public int eliminar(Integer codigo) throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         String sqlEliminacion = "DELETE FROM Curso WHERE int_cursid=?";
         PreparedStatement pst;
-        try {
-            pst = AccesoDB.getConection().prepareStatement(sqlEliminacion);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            return 0;
-        }
+        pst = AccesoDB.getConection().prepareStatement(sqlEliminacion);
         pst.setInt(1, codigo);
         int rowsAffected = pst.executeUpdate();
         return rowsAffected;
@@ -125,17 +109,13 @@ public class CursoDAO implements CursoDAOInterface {
      * @throws SQLException
      */
     @Override
-    public List<CursoTO> findAll() throws SQLException {
+    public List<CursoTO> listarTodos() throws SQLException, InstantiationException,
+            IllegalAccessException, ClassNotFoundException {
         List lista = new ArrayList();
         String sqlConsulta = "SELECT int_cursid, vch_cursnombre, "
                 + "vch_cursdescripcion, int_curscreditos FROM Curso ORDER BY 1";
         PreparedStatement pst;
-        try {
-            pst = AccesoDB.getConection().prepareStatement(sqlConsulta);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-            return null;
-        }
+        pst = AccesoDB.getConection().prepareStatement(sqlConsulta);
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
             CursoTO obj = new CursoTO();

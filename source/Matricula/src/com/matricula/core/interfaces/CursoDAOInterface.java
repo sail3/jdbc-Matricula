@@ -16,6 +16,9 @@ public interface CursoDAOInterface extends Mantenible<CursoTO, Integer> {
      *
      * @return List de los registros de la tabla cursos de la base de datos.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
-    List<CursoTO> findAll() throws SQLException;
+    List<CursoTO> listarTodos() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 }

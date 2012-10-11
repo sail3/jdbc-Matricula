@@ -18,6 +18,9 @@ public interface Mantenible<T, K> {
      * @return un int que representa el número de filas afectadas, devuelve 1 si
      * la inserción fue exitosa, en caso contrario devuelve 0.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     int crear(T obj) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
@@ -26,6 +29,9 @@ public interface Mantenible<T, K> {
      * @param key el codigo identificador del registro en la base de datos.
      * @return un objeto de tipo T.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     T recuperar(K key) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
@@ -35,6 +41,9 @@ public interface Mantenible<T, K> {
      * @return un int que representa el número de filas afectadas. Devuelve 0 si
      * no se encontro el registro a actualizar.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     int actualizar(T obj) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
@@ -44,6 +53,9 @@ public interface Mantenible<T, K> {
      * @return un int que representa el número de filas afectadas. Devuelve 0 si
      * no se encontro el registro a eliminar.
      * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     int eliminar(K key) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 }

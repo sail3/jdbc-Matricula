@@ -2,7 +2,6 @@ package com.matricula.test;
 
 import com.matricula.core.dao.ProfesorDAO;
 import com.matricula.core.to.ProfesorTO;
-import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -100,7 +99,7 @@ public class TestProfesor {
                             reg = (ProfesorTO) it.next();
                             System.out.println(reg);
                         }
-                    } catch (SQLException ex) {
+                    } catch (Exception ex) {
                         System.out.println("Error: " + ex.getMessage());
                     }
 
