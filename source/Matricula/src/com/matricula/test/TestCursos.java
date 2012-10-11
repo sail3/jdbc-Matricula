@@ -7,8 +7,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase de Prueba del uso de la clase CursoDAO.
+ * @author Gustavo Fernández
+ */
 public class TestCursos {
 
+     /**
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         int flag;//flag para controlar la salida del menú.
         CursoDAO dao = null;
@@ -103,7 +111,7 @@ public class TestCursos {
                         Iterator it = lista.iterator();
                         while (it.hasNext()) {
                             CursoTO registro;
-                            registro = (CursoTO) it.next();
+                            registro = (CursoTO) it.next();//Casting de Object a CursoTO
                             System.out.println(registro);
                         }
                     } catch (SQLException ex) {
