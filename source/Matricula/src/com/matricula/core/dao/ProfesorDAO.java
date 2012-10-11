@@ -123,7 +123,7 @@ public class ProfesorDAO implements ProfesorDAOInterface {
      * @throws SQLException
      */
     @Override
-    public List<ProfesorTO> findAll() throws SQLException {
+    public List<ProfesorTO> listarTodos() throws SQLException {
         List lista = new ArrayList();
         String sqlConsulta = "SELECT int_profid, vch_profnombre, vch_proftitulo "
                 + "FROM Profesor ORDER BY 1";

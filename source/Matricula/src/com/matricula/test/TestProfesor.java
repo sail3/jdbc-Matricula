@@ -93,7 +93,7 @@ public class TestProfesor {
                 //Se listan los profesores
                 case 4:
                     try {
-                        List lista = dao.findAll();
+                        List lista = dao.listarTodos();
                         Iterator it = lista.iterator();
                         while (it.hasNext()) {
                             ProfesorTO reg;

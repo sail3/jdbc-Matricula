@@ -16,5 +16,5 @@ public interface ProfesorDAOInterface extends Mantenible<ProfesorTO, Integer> {
      * @return List de los registros de la tabla profesores de la base de datos.
      * @throws SQLException
      */
-    List<ProfesorTO> findAll() throws SQLException;
+    List<ProfesorTO> listarTodos() throws SQLException;
 }
