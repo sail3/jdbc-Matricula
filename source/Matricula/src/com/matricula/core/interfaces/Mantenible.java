@@ -19,7 +19,7 @@ public interface Mantenible<T, K> {
      * la inserción fue exitosa, en caso contrario devuelve 0.
      * @throws SQLException
      */
-    int crear(T obj) throws SQLException;
+    int crear(T obj) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
     /**
      *
@@ -27,7 +27,7 @@ public interface Mantenible<T, K> {
      * @return un objeto de tipo T.
      * @throws SQLException
      */
-    T recuperar(K key) throws SQLException;
+    T recuperar(K key) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
     /**
      *
@@ -36,7 +36,7 @@ public interface Mantenible<T, K> {
      * no se encontro el registro a actualizar.
      * @throws SQLException
      */
-    int actualizar(T obj) throws SQLException;
+    int actualizar(T obj) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 
     /**
      *
@@ -45,5 +45,5 @@ public interface Mantenible<T, K> {
      * no se encontro el registro a eliminar.
      * @throws SQLException
      */
-    int eliminar(K key) throws SQLException;
+    int eliminar(K key) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 }

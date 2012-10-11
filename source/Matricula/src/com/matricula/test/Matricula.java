@@ -42,7 +42,7 @@ AlumnoDAO Objeto = new AlumnoDAO();
               System.out.println("Ingrese nombre:");String nombre=lec.readLine();
               System.out.println("Ingrese recibo:");String recibo=lec.readLine();
               //Llamamos al metodo registrar
-              new AlumnoDAO().registrarAlumno(new AlumnoTO(nombre, recibo));
+              new AlumnoDAO().crear(new AlumnoTO(nombre, recibo));
               System.out.println("----------------------------------");
               System.out.println("Registro creado!");
               break;
@@ -50,14 +50,14 @@ AlumnoDAO Objeto = new AlumnoDAO();
           case 2: //Editando un registro
               System.out.println("Ingrese su codigo: ");
               int codigo=Integer.parseInt(lec.readLine());//Leemos el codigo
-              AlumnoTO a = new AlumnoDAO().obtenerAlumno(codigo);//Obtenemos la informacion del alumno
+              AlumnoTO a = new AlumnoDAO().recuperar(codigo);//Obtenemos la informacion del alumno
               System.out.println("----------------------------------");//Mostramos la informacion del alumno
               System.out.println("Codigo Actual:"+a.getCodigo()+"\nNombre Actual:"+a.getNombre()+"\nRecibo Actual:"+a.getRecibo());
               System.out.println("----------------------------------");
               System.out.println("Nuevo nombre:");String nuevoNombre=lec.readLine();
               System.out.println("Nuevo recibo:");String nuevoRecibo=lec.readLine();
               //Llamamos al metodo editar
-              new AlumnoDAO().editarAlumno(new AlumnoTO(codigo, nuevoNombre, nuevoRecibo));
+              new AlumnoDAO().actualizar(new AlumnoTO(codigo, nuevoNombre, nuevoRecibo));
               System.out.println("----------------------------------");
               System.out.println("Registro editado!");
               break;
