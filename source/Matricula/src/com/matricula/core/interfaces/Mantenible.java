@@ -4,13 +4,13 @@ import java.sql.SQLException;
 
 /**
  * Interface que define las operaciones de persistencia CRUD (create, retrieve,
- * update and delete)
+ * update and delete) - Crear, recuperar, actualizar y eliminar.
  *
  * @param <T> tipo del Objeto a mantener.
  * @param <K> tipo del código identificador del objeto.
  * @author Gustavo Fernández
  */
-public interface Maintanable<T, K> {
+public interface Mantenible<T, K> {
 
     /**
      *
@@ -19,7 +19,7 @@ public interface Maintanable<T, K> {
      * la inserción fue exitosa, en caso contrario devuelve 0.
      * @throws SQLException
      */
-    int create(T obj) throws SQLException;
+    int crear(T obj) throws SQLException;
 
     /**
      *
@@ -27,7 +27,7 @@ public interface Maintanable<T, K> {
      * @return un objeto de tipo T.
      * @throws SQLException
      */
-    T retrieve(K key) throws SQLException;
+    T recuperar(K key) throws SQLException;
 
     /**
      *
@@ -36,7 +36,7 @@ public interface Maintanable<T, K> {
      * no se encontro el registro a actualizar.
      * @throws SQLException
      */
-    int update(T obj) throws SQLException;
+    int actualizar(T obj) throws SQLException;
 
     /**
      *
@@ -45,5 +45,5 @@ public interface Maintanable<T, K> {
      * no se encontro el registro a eliminar.
      * @throws SQLException
      */
-    int delete(K key) throws SQLException;
+    int eliminar(K key) throws SQLException;
 }

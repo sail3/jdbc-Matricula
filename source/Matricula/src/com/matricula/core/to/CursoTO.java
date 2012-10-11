@@ -9,57 +9,63 @@ package com.matricula.core.to;
  * @author dev09
  */
 public class CursoTO {
-  private int codigo;
-  private String nombre;
-  private String descripcion;
-  private int creditos;
 
-  public CursoTO(int codigo, String nombre, String descripcion, int creditos) {
-    this.codigo = codigo;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.creditos = creditos;
-  }
+    private int codigo;
+    private String nombre;
+    private String descripcion;
+    private int creditos;
 
-  public CursoTO(String nombre, String descripcion, int creditos) {
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.creditos = creditos;
-  }
+    public CursoTO(int codigo, String nombre, String descripcion, int creditos) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.creditos = creditos;
+    }
 
-  public CursoTO() {
-  }
+    public CursoTO(String nombre, String descripcion, int creditos) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.creditos = creditos;
+    }
 
-  public int getCodigo() {
-    return codigo;
-  }
+    public CursoTO() {
+    }
 
-  public void setCodigo(int codigo) {
-    this.codigo = codigo;
-  }
+    public int getCodigo() {
+        return codigo;
+    }
 
-  public String getNombre() {
-    return nombre;
-  }
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+    public String getNombre() {
+        return nombre;
+    }
 
-  public String getDescripcion() {
-    return descripcion;
-  }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-  public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
-  }
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-  public int getCreditos() {
-    return creditos;
-  }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-  public void setCreditos(int creditos) {
-    this.creditos = creditos;
-  }
-  
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    @Override
+    public String toString() {
+        return "CursoTO{" + "codigo=" + codigo + ", nombre=" + nombre
+                + ", descripcion=" + descripcion + ", creditos=" + creditos + '}';
+    }
 }

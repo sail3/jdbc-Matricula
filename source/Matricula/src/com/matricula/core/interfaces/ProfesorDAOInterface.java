@@ -9,7 +9,7 @@ import java.util.List;
  * @author Gustavo Fernández
  * @see Maintanable
  */
-public interface ProfesorDAOInterface extends Maintanable<ProfesorTO, Integer> {
+public interface ProfesorDAOInterface extends Mantenible<ProfesorTO, Integer> {
 
     /**
      *

@@ -47,7 +47,7 @@ public class TestProfesor {
                         ProfesorTO obj = new ProfesorTO();
                         obj.setNombre(nombre);
                         obj.setTitulo(titulo);
-                        int rowsAffected = dao.create(obj);//Se inserta un nuevo profesor
+                        int rowsAffected = dao.crear(obj);//Se inserta un nuevo profesor
                         System.out.println("Inserción Exitosa\n" + rowsAffected + " fila insertada");
                     } catch (Exception ex) {
                         System.err.println("Error: " + ex.getMessage());
@@ -67,7 +67,7 @@ public class TestProfesor {
                         obj.setCodigo(codigo);
                         obj.setNombre(nombre);
                         obj.setTitulo(titulo);
-                        int rowsAffected = dao.update(obj);//Se actualizan lso datos
+                        int rowsAffected = dao.actualizar(obj);//Se actualizan los datos
                         System.out.println("Actualización Exitosa\n" + rowsAffected + " fila actualizada");
                     } catch (Exception ex) {
                         System.err.println("Error: " + ex.getMessage());
@@ -79,7 +79,7 @@ public class TestProfesor {
                     try {
                         System.out.println("Ingrese el codigo del profesor:");
                         int codigo = in.nextInt();
-                        int rowsAffected = dao.delete(codigo);//Se elimina el profesor
+                        int rowsAffected = dao.eliminar(codigo);//Se elimina el profesor
                         if (rowsAffected == 0) {//Si no hay registros eliminados
                             System.err.println("Códgio no encontrado.");
                         } else {//Si hay uno o más registros eliminados
@@ -107,7 +107,7 @@ public class TestProfesor {
                     break;
             }
         } while (flag != 5);/*
-         * Mientras no se escoga la opcion 5 "Salir" segira el loop, caso
+         * Mientras no se escoga la opcion 5 "Salir" seguira el loop, caso
          * contrario finaliza el loop y la aplicación.
          */
     }
