@@ -66,35 +66,6 @@ INSERT INTO `Curso` VALUES (1000,'curso','curso',3);
 /*!40000 ALTER TABLE `Curso` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `Matricula`
---
-
-DROP TABLE IF EXISTS `Matricula`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Matricula` (
-  `int_matrid` int(4) NOT NULL AUTO_INCREMENT,
-  `int_alumid` int(4) NOT NULL,
-  `int_progid` int(4) NOT NULL,
-  `vch_matrsemestre` varchar(15) NOT NULL,
-  PRIMARY KEY (`int_matrid`),
-  KEY `fk_matricula_alumno` (`int_alumid`),
-  KEY `fk_matricula_programacion` (`int_progid`),
-  CONSTRAINT `Matricula_ibfk_1` FOREIGN KEY (`int_alumid`) REFERENCES `Alumno` (`int_alumid`),
-  CONSTRAINT `Matricula_ibfk_2` FOREIGN KEY (`int_progid`) REFERENCES `Programacion` (`int_progid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Matricula`
---
-
-LOCK TABLES `Matricula` WRITE;
-/*!40000 ALTER TABLE `Matricula` DISABLE KEYS */;
-INSERT INTO `Matricula` VALUES (1000,1000,1000,'Semestre Academ');
-/*!40000 ALTER TABLE `Matricula` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `Profesor`
@@ -150,6 +121,49 @@ LOCK TABLES `Programacion` WRITE;
 INSERT INTO `Programacion` VALUES (1000,1000,1000,'horario');
 /*!40000 ALTER TABLE `Programacion` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `Matricula`
+--
+
+DROP TABLE IF EXISTS `Matricula`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Matricula` (
+  `int_matrid` int(4) NOT NULL AUTO_INCREMENT,
+  `int_alumid` int(4) NOT NULL,
+  `int_progid` int(4) NOT NULL,
+  `vch_matrsemestre` varchar(15) NOT NULL,
+  PRIMARY KEY (`int_matrid`),
+  KEY `fk_matricula_alumno` (`int_alumid`),
+  KEY `fk_matricula_programacion` (`int_progid`),
+  CONSTRAINT `Matricula_ibfk_1` FOREIGN KEY (`int_alumid`) REFERENCES `Alumno` (`int_alumid`),
+  CONSTRAINT `Matricula_ibfk_2` FOREIGN KEY (`int_progid`) REFERENCES `Programacion` (`int_progid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Matricula`
+--
+
+LOCK TABLES `Matricula` WRITE;
+/*!40000 ALTER TABLE `Matricula` DISABLE KEYS */;
+INSERT INTO `Matricula` VALUES (1000,1000,1000,'Semestre Academ');
+/*!40000 ALTER TABLE `Matricula` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Creating a new_user 'matricula'
+--
+
+CREATE USER 'matricula'@'localhost' IDENTIFIED BY 'matricula';
+
+--
+-- Assinging the permissions to the user 'matricula'
+--
+
+GRANT ALL ON DB_matricula.* TO matricula@localhost IDENTIFIED BY 'matricula';
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

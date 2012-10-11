@@ -43,29 +43,6 @@ CREATE TABLE `Curso` (
 INSERT INTO Curso VALUES (1000,'curso','curso',3);
 
 #
-# Table structure for table 'Matricula'
-#
-
-# DROP TABLE IF EXISTS Matricula;
-CREATE TABLE `Matricula` (
-  `int_matrid` int(4) NOT NULL AUTO_INCREMENT,
-  `int_alumid` int(4) NOT NULL,
-  `int_progid` int(4) NOT NULL,
-  `vch_matrsemestre` varchar(15) NOT NULL,
-  PRIMARY KEY (`int_matrid`),
-  KEY `fk_matricula_alumno` (`int_alumid`),
-  KEY `fk_matricula_programacion` (`int_progid`),
-  CONSTRAINT `Matricula_ibfk_1` FOREIGN KEY (`int_alumid`) REFERENCES `Alumno` (`int_alumid`),
-  CONSTRAINT `Matricula_ibfk_2` FOREIGN KEY (`int_progid`) REFERENCES `Programacion` (`int_progid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
-
-#
-# Dumping data for table 'Matricula'
-#
-
-INSERT INTO Matricula VALUES (1000,1000,1000,'Semestre Academ');
-
-#
 # Table structure for table 'Profesor'
 #
 
@@ -105,4 +82,39 @@ CREATE TABLE `Programacion` (
 #
 
 INSERT INTO Programacion VALUES (1000,1000,1000,'horario');
+
+#
+# Table structure for table 'Matricula'
+#
+
+# DROP TABLE IF EXISTS Matricula;
+CREATE TABLE `Matricula` (
+  `int_matrid` int(4) NOT NULL AUTO_INCREMENT,
+  `int_alumid` int(4) NOT NULL,
+  `int_progid` int(4) NOT NULL,
+  `vch_matrsemestre` varchar(15) NOT NULL,
+  PRIMARY KEY (`int_matrid`),
+  KEY `fk_matricula_alumno` (`int_alumid`),
+  KEY `fk_matricula_programacion` (`int_progid`),
+  CONSTRAINT `Matricula_ibfk_1` FOREIGN KEY (`int_alumid`) REFERENCES `Alumno` (`int_alumid`),
+  CONSTRAINT `Matricula_ibfk_2` FOREIGN KEY (`int_progid`) REFERENCES `Programacion` (`int_progid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=latin1;
+
+#
+# Dumping data for table 'Matricula'
+#
+
+INSERT INTO Matricula VALUES (1000,1000,1000,'Semestre Academ');
+
+#
+# Creating a new_user 'matricula'
+#
+
+CREATE USER 'matricula'@'localhost' IDENTIFIED BY 'matricula';
+
+#
+# Assinging the permissions to the user 'matricula'
+#
+
+GRANT ALL ON DB_matricula.* TO matricula@localhost IDENTIFIED BY 'matricula';
 
